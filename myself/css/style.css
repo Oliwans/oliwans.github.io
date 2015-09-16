@@ -14,23 +14,79 @@ a{
 	text-decoration: none;
 	color: #555;
 }
-h1{font-size:2em;margin:0 0 0.5em 0;margin-top:0;}
-h4{font-size:1.25em;margin:0 0 0.1em 0;margin-top:0;}
-p{font-size:1.5em;margin:0.5em 0;}
-p{color:#aee2d9}
-h1{text-align:center;}
-h1+h2,h1+p{margin-top:-0.5em;}
-#title{margin:0.5em 0 0 0;}
-#subtitle{margin:1em 0 0.25em 0;color:#aee2d9;}
-*{box-sizing:border-box;}
-.section{color:#eef3f0;padding:50px;transition:0.5s;}
-.center{text-align:center;margin-top: 50px;}
-#avatar{width:256px;height:256px;border:10px solid #aee2d9;-webkit-border-radius:50%;-moz-border-radius:50%;-o-border-radius:50%;border-radius:50%;}
-.last{margin-top: 150px;}
-.marginn{margin-left: 180px;}
-.right{float: right;}
-.left{float: left;}
-.div-1{width:500px;margin: o auto; clear: both;line-height: 20px;}
+h1{
+	font-size:2em;margin:0 0 0.5em 0;margin-top:0;
+}
+h4{
+	font-size:1.25em;margin:0 0 0.1em 0;margin-top:0;
+}
+p{
+	font-size:1.5em;margin:0.5em 0;
+}
+p{
+	color:#aee2d9
+}
+h1{
+	text-align:center;
+}
+h1+h2,h1+p{
+	margin-top:-0.5em;
+	display: inline-block;
+}
+#title{
+	margin:0.5em 0 0 0;
+}
+#subtitle{
+	margin:1em 0 0.25em 0;color:#aee2d9;
+}
+*{
+	box-sizing:border-box;
+}
+.section{
+	color:#eef3f0;padding:50px;transition:0.5s;
+}
+.center{
+	text-align:center;margin-top: 50px;
+}
+#avatar{
+	width:256px;
+	height:256px;
+	border:10px solid #aee2d9;
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	-o-border-radius:50%;
+	border-radius:50%;
+}
+.last{
+	margin-top: 150px;
+}
+.marginn{
+	margin-left: 180px;
+}
+.right{
+	float: right;
+}
+.left{
+	float: left;
+}
+.left1{
+	float: left;
+	line-height: 30px;
+}
+.div-1{
+	width:350px;
+	height: 50px;
+	margin: o auto; 
+	clear: both;
+	line-height: 20px;
+}
+.div-2{
+	width:400px;
+	height: 50px;
+	margin: o auto; 
+	clear: both;
+	line-height: 20px;
+}
 /*每个页面底部引导三角形的制作，通过做出矩形然后旋转45°，并掩盖一半的方式进行制作*/
 .st-deco1{
 	width:50px;
@@ -59,6 +115,17 @@ h1+h2,h1+p{margin-top:-0.5em;}
 	left: 50%;	
 	bottom: -25px;
 	margin-left: -25px;
+}
+.col-left{
+	width: 350px;
+	height: auto;
+	float: left;
+}
+.col-right{
+	width: 350px;
+	height: auto;
+	float: left;
+	margin-left: 200px;
 }
 .clr{
 	width: 0;
@@ -206,6 +273,10 @@ h1+h2,h1+p{margin-top:-0.5em;}
     transform:translateY(-400%);
 }
 /*一三五界面和二四界面背景色分别设置*/
-#st-panel-1,#st-panel-3,#st-panel-5{background: #22b573;}
-#st-panel-2,#st-panel-4{background:#6699cc;}
+#st-panel-1,#st-panel-3,#st-panel-5{
+	background: #22b573;
+}
+#st-panel-2,#st-panel-4{
+	background:#6699cc;
+}
 /*非常希望能到贵公司培训实习，希望给我一个机会，只要肯教我就肯钻研*/
