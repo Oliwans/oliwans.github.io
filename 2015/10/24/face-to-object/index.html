@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>JavaScript中对象的几种创建方式 | Oliwans&#39;blog</title>
+  <meta name="description" content="不会写影评的摄影师不是好的FED" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <meta name="generator" content="Oliwans'blog">
+
+  
+  
+  
+
+  
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body class="home-template">
+<div id="perspective" class="perspective effect-movedown">
+  <div class="container">
+    <!-- wrapper -->
+    <div class="wrapper">
+
+      <header class="site-head"  style="background: #24282b url(/img/bgp.jpg) " >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/img/pic.gif" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Oliwans'blog</h1>
+            <h2 class="blog-description">不会写影评的摄影师不是好的FED</h2>
+            <h5><button id="showMenu">Show Menu</button></h5>
+        </div>
+    </div>
+</header>
+
+      
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2015-10-24T05:02:37.000Z" itemprop="datePublished">
+          2015-10-24
+      </time>
+    
+</span>
+    <h1 class="post-title">JavaScript中对象的几种创建方式</h1>
+    <section class="post-content">
+      <hr>
+<p>　　面向对象的创建方式一共有几种？有很多人说是有两种，也有很多人说是有三种，《JavaScirpt高级程序设计》中对象的创建方式又为大家展开讲列举了几种对象的创建方式，下面我就做一个总结，把面向对象的几种创建方式完整的展现在大家面前。</p>
+<p>创建对象一共有：</p>
+<h5 id="1-通过new_Object()构造函数的方法初始化一个新对象">1.通过new Object()构造函数的方法初始化一个新对象</h5><p>例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line">    obj.name = <span class="string">"Bob"</span>;</span><br><span class="line">    obj.age = <span class="number">18</span>;</span><br><span class="line">    obj.act = <span class="function"><span class="keyword">function</span></span>&#123;</span><br><span class="line">        alert(<span class="string">"I like football"</span>);</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>　　JS面向对象构造函数的方法即引用内置对象，实例化出一个新对象。<br>　　JavaScript可用的内置对象可分为两种：<br>　　1，JavaScript语言原生对象（语言级对象），如String、Object、Function等；<br>　　2，JavaScript运行期的宿主对象（环境宿主对象），如window、document、body等。</p>
+<h5 id="2-字面量创建方式，即使用json符号创建">2.字面量创建方式，即使用json符号创建</h5><p>例如：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> obj1</span> = &#123;</span><br><span class="line">    x:<span class="number">1</span>,</span><br><span class="line">    y:<span class="number">2</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>或者：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    <span class="string">'x'</span>:<span class="number">1</span>,</span><br><span class="line">    <span class="string">'y'</span>:<span class="number">2</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>　　除此之外，字面量创建方式可以用来传输数组形式的json<br>例如：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var somebody = &#123; </span><br><span class="line"><span class="label">    x:</span>[&#123;<span class="string">name:</span><span class="string">"Bob"</span>&#125;,&#123;<span class="string">name:</span><span class="string">"Danny"</span>&#125;,&#123;<span class="string">name:</span><span class="string">"Janny"</span>&#125;,&#123;<span class="string">name:</span><span class="string">"LiMing"</span>&#125;], </span><br><span class="line"><span class="label">    y:</span>[&#123;<span class="string">age:</span><span class="number">18</span>&#125;,&#123;<span class="string">age:</span><span class="number">19</span>&#125;,&#123;<span class="string">age:</span><span class="number">20</span>&#125;,&#123;<span class="string">age:</span><span class="number">21</span>&#125;] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　这种方式是采用键、值一一对应的方式，JSON具有以下特点：（1）简单格式化的数据交换；（2）易于人们的读写习惯；（3）易于机器的分析和运行。而JSON的每个“键”相当于对象的属性，利用json传输数组如访问x中的第一个条目，在JavaScript中，就可以简单地使用“somebody.x[0].name”来获取“Bob”这个值。</p>
+<h5 id="3-使用Object-create()的方式创建新对象">3.使用Object.create()的方式创建新对象</h5><p>例如：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = <span class="built_in">Object</span>.create(&#123;</span><br><span class="line">    x:<span class="number">1</span>,</span><br><span class="line">    y:<span class="number">2</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(<span class="keyword">null</span>);</span><br></pre></td></tr></table></figure></p>
+<p>　　Object.create()的方法是ECMAScrit5中新定义的一个方法，所以并不被大众所熟知，可能这是大家认为创建对象有两种方式的原因，它包含2个参数，第一个参数是这个对象的原型对象，第二个参数是可选参数，用以对对象属性进行进一步的描述。<br><code>var obj = Object.create(Object.prototype);</code><br>等同于<br><code>var obj = {};</code><br>也等同于<br><code>var obj = new Object();</code></p>
+<p>　　好了，现在创建对象的三种方式都介绍完了，但是问题又来了，当我创建几个相似对象的时候，每个对象我不能从新定义它的属性值，那样的话就覆盖了原有的属性值，使得原来的对象不能正确的访问到，而我重新创建又会产生大量的重复代码，那我改如何改进呢？好在我们的程序员们都很聪明，用封装函数的方法来在外部调用，就解决了这一问题，而这也是《JavaScript高级程序设计》面向对象一章中给我们介绍的五种方法</p>
+<h5 id="(1)工厂模式">(1)工厂模式</h5><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = &#123;&#125;;</span><br><span class="line">    n.name = <span class="string">"LiMing"</span>;</span><br><span class="line">    n.age = <span class="number">30</span>;</span><br><span class="line">    n.showName = showName;</span><br><span class="line">    <span class="keyword">return</span> n;		</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showName</span><span class="params">()</span></span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> x = Person(); </span><br><span class="line">alert(x.name);</span><br></pre></td></tr></table></figure>
+<h5 id="(2)构造函数模式">(2)构造函数模式</h5><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"LiMing"</span>;</span><br><span class="line">    <span class="keyword">this</span>.age = <span class="number">30</span>;</span><br><span class="line">    <span class="keyword">this</span>.showName = showName;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showName</span><span class="params">()</span></span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> Person();</span><br><span class="line">alert(x.name);</span><br></pre></td></tr></table></figure>
+<h5 id="(3)原型模式">(3)原型模式</h5><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.name = <span class="string">"LiMing"</span>;</span><br><span class="line">Person.prototype.age = <span class="number">30</span>;</span><br><span class="line">person.prototype.showName = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">	alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> Person();</span><br><span class="line">alert(x.name);</span><br></pre></td></tr></table></figure>
+<h5 id="(4)组合使用构造函数模式和原型模式">(4)组合使用构造函数模式和原型模式</h5><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"LiMing"</span>;</span><br><span class="line">    <span class="keyword">this</span>.age = <span class="number">30</span>;</span><br><span class="line">&#125;</span><br><span class="line">    Person.prototype.showName = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> Person();</span><br><span class="line">alert(x.showName());</span><br></pre></td></tr></table></figure>
+<h5 id="(5)动态原型模式">(5)动态原型模式</h5><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"LiMing"</span>;</span><br><span class="line">    <span class="keyword">this</span>.age = <span class="number">30</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> Person.showName == <span class="string">"undefined"</span>) &#123;</span><br><span class="line">Person.prototype.showName = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">Person.showName = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> Person();</span><br><span class="line">alert(x.showName());</span><br></pre></td></tr></table></figure>
+<p>　　以上的五种方法，都是经典的创建对象的方法，这里推荐使用第四种和第五种，因为它们都是演变而来的，第一种工厂模式没有解决对象识别的问题，第二种构造函数模式中建立了全局作用域的函数，如果很多的话就没有丝毫的封装性可言，第三种原型方式如果创建多个对象实例，修改某一对象原型使得其他对象原型跟跟随着改变，而缺少了属于自己的全部属性，这也是我们不希望看到的，而第四种和第五种完全兼顾了这些问题，第五种还是第四种的变形体，防止重复创建方法，所以如果没有特殊要求的话可以随便使用上述五种方法，如果有的话推荐第四种和第五种。</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Oliwans</h4>
+    <p>个人博客技术、观点、见解分享者；我会在这里分享工作中的问题；兴趣方面的观点；生活中的感悟。</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-sina-weibo" href="http://v.t.sina.com.cn/share/share.php?title=个人博客技术、观点、见解分享者；我会在这里分享工作中的问题；兴趣方面的观点；生活中的感悟。 ?url=www.oliwans.me/2015/10/24/face-to-object/" target="_blank">
+        <span class="hidden">weibo</span>
+    </a>
+    <a class="icon-twitter" href="http://twitter.com/share?url=www.oliwans.me/2015/10/24/face-to-object/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=www.oliwans.me/2015/10/24/face-to-object/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=www.oliwans.me/2015/10/24/face-to-object/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="icon-logoo">•</span>
+    
+    <a class="older-posts" href="/2015/04/18/Jane-Eyre/">
+        《简·爱》 →
+    </a>
+    
+</nav>
+
+  <!-- 多说评论框 start -->
+
+	<div class="ds-thread" data-thread-key="2015/10/24/face-to-object/" data-title="JavaScript中对象的几种创建方式" data-url="www.oliwans.me/2015/10/24/face-to-object/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"oliwans"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+</main>
+
+
+      
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Oliwans'blog</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+
+
+
+
+
+  </div>
+</div>
+
+<nav  class="outer-nav top horizontal">
+
+          <a class="icon-home"  href="/"><span>Home</span></a>
+
+          <a class="icon-news"  href="/archive"><span>Archive</span></a>
+
+          <a class="icon-image"  href="/images"><span>Images</span></a>
+
+          <a class="icon-wiki"  href="/wiki/2014-10-28-wiki/"><span>Wiki</span></a>
+
+          <a class="icon-Favorites"  href="/favorites"><span>Favorites</span></a>
+
+          <a class="icon-mail"  href="/myself/myself.html"><span>Contact</span></a>
+
+</nav>
+
+</div>
+</body>
+</html>
