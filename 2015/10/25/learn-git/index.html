@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>git速成手册(一) | Oliwans&#39;blog</title>
+  <meta name="description" content="不会写影评的摄影师不是好的FED" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <meta name="generator" content="Oliwans'blog">
+
+  
+  
+  
+
+  
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body class="home-template">
+<div id="perspective" class="perspective effect-movedown">
+  <div class="container">
+    <!-- wrapper -->
+    <div class="wrapper">
+
+      <header class="site-head"  style="background: #24282b url(/img/bgp.jpg) " >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/img/pic.gif" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Oliwans'blog</h1>
+            <h2 class="blog-description">不会写影评的摄影师不是好的FED</h2>
+            <h5><button id="showMenu">Show Menu</button></h5>
+        </div>
+    </div>
+</header>
+
+      
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2015-10-25T02:25:58.000Z" itemprop="datePublished">
+          2015-10-25
+      </time>
+    
+</span>
+    <h1 class="post-title">git速成手册(一)</h1>
+    <section class="post-content">
+      <hr>
+<h4 id="git入门">git入门</h4><hr>
+<p>　　在现在的互联网发展过程中，版本控制工具起到非常大的作用，无论企业还是个人，将代码远程托管起来是一种便捷的操作方式，主流的免费版本控制工具无疑是git和svn两种，当然还有一些收费的版本控制工具，一般大型企业用的较多，虽然svn诞生的更早也被大多数的程序员所接受，但是世界在发展，git的诞生无疑冲击了svn的霸主地位，git以简洁的操作，分布式，以及对网络的不过分依赖等等优势被许多的优秀程序员所接受，而面试官也在逐渐要求被面试者对git有一定的了解，所以根据我自己的学习情况，整理了一份git速成及指令清单，供大家快速上手，本教程分三篇，分别从个人操作git，团队协作git，及标签、服务器搭建方面进行阐述，方便大家由浅入深的学习。OK，闲话结束，进入正题：</p>
+<p>　　对git的操作首先需要大家安装最新版本的git，针对主流的操作系统，git分为Linux，Mac OS X，和windows三个不同的版本，安装方法在此不再赘述，网上google即可，如果你已安装完毕，那我们就开始吧！</p>
+<blockquote>
+<ul>
+<li>个人操作git</li>
+</ul>
+</blockquote>
+<p>　　<code>$mkdir &lt;repository&gt;　　　　　                                   //创建版本库</code><br>　　此指令用来创建版本库，也可以在本地手动添加</p>
+<p>　　<code>$cd &lt;repository&gt;                                                //用git锁定当前库</code><br>　　cd指令是锁定当前库的，你要明确的要操作的库，也可以在本地选中所要选择的库，右键git bush here</p>
+<p>　　<code>$pwd                                                            //显示当前路径</code><br>　　可显示当前的绝对路径</p>
+<p>　　<code>$git init                                                       //将其变成git可以管理的库</code><br>　　git的一般操作，使用git指令控制的一般前提</p>
+<p>　　<code>$git add &lt;file&gt;　　　　　                                       //把文件添加到暂存库</code><br>　　此指令用来添加文件到暂存库</p>
+<p>　　<code>$git commit -m&quot;something&quot;                                       //把暂存库文件添加到版本库</code><br>　　将文件添加到版本库，something里面为备注内容，方便查看作用</p>
+<p>　　<code>$git status                                                     //掌握工作区的状态</code><br>　　此指令可用来掌握工作区状态，即查看当前工作区内容有没有提交到暂存款进而提交到版本库</p>
+<p>　　<code>$git diff                                                       //查看文件工作区被修改的内容</code><br>　　diff顾名思义为different，查看工作区与之前有什么不同</p>
+<p>　　<code>$git log　　　　　                                              //查看提交版本库的历史版本号</code><br>　　如果想回退到上一个版本，可用git log进行commit_id的查看，查看每个版本的版本号，个人信息，发布时间等</p>
+<p>　　<code>$git log --pretty=oneline                                       //查看提交版本库的历史版本号</code><br>　　属于git log的精简版，只显示commit_id在一行</p>
+<p>　　<code>$git reset --hard HEAD^                                         //版本回退到上一个版本</code><br>　　三区同步操作，HEAD表示当前版本，^可以表示上一个版本，回退到上十个版本可以用HEAD~10表示</p>
+<p>　　<code>$git reflog                                                     //查看所有操作的历史版本号</code><br>　　git log的强化版，可以查看包括git log回退，以及前进的操作历史版本号</p>
+<p>　　<code>$git reset --hard commit_id　　　　　                           //通过commit_id进行版本回退和前进</code><br>　　三区同步操作，属于git reset —hard HEAD的强化版，可穿梭到未来版本</p>
+<p>　　<code>$git reset HEAD &lt;file&gt;&quot;                                         //把暂存库与版本库同步</code><br>　　此项是针对暂存库进行的操作，使其与版本库同步</p>
+<p>　　<code>$git reset commit_id &lt;file&gt;                                     //把暂存库退回到对应版本</code><br>　　针对暂存库进行操作，可将暂存库退回到对应的commit_id版本，版本库不变</p>
+<p>　　<code>$git checkout -- &lt;file&gt;                                            //把工作区回退成暂存区内容</code><br>　　如果修改了工作区，想撤销修改，用此指令，如果修改了工作区还add到了暂存区，则先使用reset HEAD <file>指令后，再应用此指令，简而言之就是把工作区的内容会退到最近的add或commit的版本</file></p>
+<p>　　<code>$git diff HEAD -- &lt;file&gt;　　　　　                              //比较工作区与版本区的不同</code><br>　　HEAD代表当前的版本，<file>指工作区文件，比较两者的不同</file></p>
+<p>　　<code>$git rm &lt;file&gt;                                                  //删除文件到暂存库</code><br>　　删除也是一种修改，明确这一点就很好理解了，rm同样可以commit到版本库，而恢复使用则使用checkout或先reset再checkout</p>
+<hr>
+<p>　　git与传统的版本控制工具例svn有一个最大的区别，就是多了一个暂存区的概念，从上面的一些指令可以看出，有的指令我在加注释的时候标记了“三区”指令，那么什么是“三区”呢？在此再做个解释说明：所谓三区，指的是工作区，暂存区，和版本库，有的叫法不同，但都指的是这三种，暂存区是一个中转站，可以中转工作区和版本库之间的内容，使得三者转换更加从容，而三者转换也存在着一定的规律：</p>
+<p>　　将工作区填充到暂存区使用<code>git add &lt;file&gt;</code>，将暂存区填充到版本库使用<code>git commit -m&quot;something&quot;</code><br>　　将版本库回退使用<code>git reset --hard HEAD~n</code>或者<code>git reset --hard commit_id</code>(注：此时三区同步回退)<br>　　将暂存区回退到版本库使用<code>git reset HEAD &lt;file&gt;</code>回到其他版本库使用<code>git reset commit_id &lt;file&gt;</code><br>　　将工作区与暂存区或版本库保持一致，即撤销工作区修改使用<code>git checkout -- &lt;file&gt;</code></p>
+<p>　　OK，以上为单人操作分布式版本控制工具的简单指令，在下一章为大家介绍多人协作时的一些分支操作git指令。</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Oliwans</h4>
+    <p>个人博客技术、观点、见解分享者；我会在这里分享工作中的问题；兴趣方面的观点；生活中的感悟。</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-sina-weibo" href="http://v.t.sina.com.cn/share/share.php?title=个人博客技术、观点、见解分享者；我会在这里分享工作中的问题；兴趣方面的观点；生活中的感悟。 ?url=www.oliwans.me/2015/10/25/learn-git/" target="_blank">
+        <span class="hidden">weibo</span>
+    </a>
+    <a class="icon-twitter" href="http://twitter.com/share?url=www.oliwans.me/2015/10/25/learn-git/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=www.oliwans.me/2015/10/25/learn-git/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=www.oliwans.me/2015/10/25/learn-git/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="icon-logoo">•</span>
+    
+    <a class="older-posts" href="/2015/10/24/face-to-object/">
+        JavaScript中对象的几种创建方式 →
+    </a>
+    
+</nav>
+
+  <!-- 多说评论框 start -->
+
+	<div class="ds-thread" data-thread-key="2015/10/25/learn-git/" data-title="git速成手册(一)" data-url="www.oliwans.me/2015/10/25/learn-git/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"oliwans"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+</main>
+
+
+      
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Oliwans'blog</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+
+
+
+
+
+  </div>
+</div>
+
+<nav  class="outer-nav top horizontal">
+
+          <a class="icon-home"  href="/"><span>Home</span></a>
+
+          <a class="icon-news"  href="/archive"><span>Archive</span></a>
+
+          <a class="icon-image"  href="/images"><span>Images</span></a>
+
+          <a class="icon-wiki"  href="/wiki/2014-10-28-wiki/"><span>Wiki</span></a>
+
+          <a class="icon-Favorites"  href="/favorites"><span>Favorites</span></a>
+
+          <a class="icon-mail"  href="/myself/myself.html"><span>Contact</span></a>
+
+</nav>
+
+</div>
+</body>
+</html>
