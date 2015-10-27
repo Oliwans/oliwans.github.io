@@ -58,7 +58,7 @@
 <p>　　对git的操作首先需要大家安装最新版本的git，针对主流的操作系统，git分为Linux，Mac OS X，和windows三个不同的版本，安装方法在此不再赘述，网上google即可，如果你已安装完毕，那我们就开始吧！</p>
 <blockquote>
 <ul>
-<li>个人操作git</li>
+<li>个人操作</li>
 </ul>
 </blockquote>
 <p>　　<code>$mkdir &lt;repository&gt;　　　　　                                   //创建版本库</code><br>　　此指令用来创建版本库，也可以在本地手动添加</p>
@@ -82,7 +82,7 @@
 <hr>
 <p>　　git与传统的版本控制工具例svn有一个最大的区别，就是多了一个暂存区的概念，从上面的一些指令可以看出，有的指令我在加注释的时候标记了“三区”指令，那么什么是“三区”呢？在此再做个解释说明：所谓三区，指的是工作区，暂存区，和版本库，有的叫法不同，但都指的是这三种，暂存区是一个中转站，可以中转工作区和版本库之间的内容，使得三者转换更加从容，而三者转换也存在着一定的规律：</p>
 <p>　　将工作区填充到暂存区使用<code>git add &lt;file&gt;</code>，将暂存区填充到版本库使用<code>git commit -m&quot;something&quot;</code><br>　　将版本库回退使用<code>git reset --hard HEAD~n</code>或者<code>git reset --hard commit_id</code>(注：此时三区同步回退)<br>　　将暂存区回退到版本库使用<code>git reset HEAD &lt;file&gt;</code>回到其他版本库使用<code>git reset commit_id &lt;file&gt;</code><br>　　将工作区与暂存区或版本库保持一致，即撤销工作区修改使用<code>git checkout -- &lt;file&gt;</code></p>
-<p>　　OK，以上为单人操作分布式版本控制工具的简单指令，在下一章为大家介绍多人协作时的一些分支操作git指令。</p>
+<p>　　OK，以上为单人操作分布式版本控制工具的简单指令，在下一章为大家介绍多人协作时的一些分支操作git指令，以及github的简单介绍。</p>
 
     </section>
     <footer class="post-footer">
@@ -112,6 +112,10 @@
     </footer>
   </article>
   <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2015/10/26/learn-git2/">
+        ← git速成手册(二)
+    </a>
     
     <span class="icon-logoo">•</span>
     

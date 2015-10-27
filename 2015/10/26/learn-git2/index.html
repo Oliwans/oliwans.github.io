@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>git速成手册(二) | Oliwans&#39;blog</title>
+  <meta name="description" content="不会写影评的摄影师不是好的FED" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <meta name="generator" content="Oliwans'blog">
+
+  
+  
+  
+
+  
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body class="home-template">
+<div id="perspective" class="perspective effect-movedown">
+  <div class="container">
+    <!-- wrapper -->
+    <div class="wrapper">
+
+      <header class="site-head"  style="background: #24282b url(/img/bgp.jpg) " >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/img/pic.gif" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Oliwans'blog</h1>
+            <h2 class="blog-description">不会写影评的摄影师不是好的FED</h2>
+            <h5><button id="showMenu">Show Menu</button></h5>
+        </div>
+    </div>
+</header>
+
+      
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2015-10-26T11:25:58.000Z" itemprop="datePublished">
+          2015-10-26
+      </time>
+    
+</span>
+    <h1 class="post-title">git速成手册(二)</h1>
+    <section class="post-content">
+      <hr>
+<h4 id="git进阶">git进阶</h4><hr>
+<p>　　上一章介绍了单人操作git的一般指令，但是都是在本地进行的，如何将自己的代码保存起来以便日后随时查看或提取呢？<br>　　想要存储代码，就得先有一个代码托管的免费平台，这个平台就是github，它是基于git口令的，可以说二者是完美结合的存在，而且项目是开源的话是永远免费的，有了github，妈妈再也不用担心我的代码了。<br>　　如果自己更新代码，然后向github上提交，上一章指令应该够用了，不过问题是没人会一直自己默默的写代码，一个项目无论大小，往往是一个技术团队协作完成，每个人都提交自己的代码上去，那么如何操作呢？提交代码遇到冲突如何解决呢？我们这一章大致的来说一下。<br>　　要使用github就需要让其与自己的电脑绑定，如果不绑定的话，谁都可以随便提交代码，那就乱套了，失去了存储代码的意义，绑定电脑就需要注册一个github账号，然后与自己电脑的ssh密钥绑定，每个电脑的ssh都是独一无二的，绑定好了以后就拥有了属于自己的代码托管平台，使用git提交前，需要先在github中创建自己的版本库，为了方便，暂时起名为learngit。(注册github账号，绑定ssh以及创建版本库的方法很简单，这里篇幅问题暂不赘述，想要了解的同学可在网上查找资料进行学习),如果这些准备工作都做好了，那么我们就可以以开始了，首先还是口令的介绍：</p>
+<blockquote>
+<ul>
+<li>关联、克隆版本库</li>
+</ul>
+</blockquote>
+<p>　　<code>$git remote add origin git@github.com:Oliwans/learngit.git　    //将本地库与远程库关联</code><br>　　这个操作呢是用来关联远程库的，如果是自己创建的话，本地和远程的名字一样，需要remote一下，把它们关联在一起，这样才方便提交代码,oliwans是我的用户名，这里要替换成你自己的</p>
+<p>　　<code>$cd clone git@github.com:Oliwans/learngit.git                   //从远程clone版本库</code><br>　　如果想clone别人的项目怎么办呢？就用上述的口令，可以将自己/别人的版本库clone下来，想clone谁的，就把oliwans替换成谁的用户名，什么？想要知道clone在哪里了？还记得上一章的口令吗？$pwd</p>
+<p>　　<code>$git clone http://github.com/Oliwans/learngit.git               //从远程clone版本库</code><br>　　这个和clone git@的效果是一样的，只不过采用的是http协议进行clone，这里推荐git@的clone方法，因为是git的原生方法，clone速度更快，更稳定</p>
+<hr>
+<blockquote>
+<ul>
+<li>多人协作的分支创建、使用</li>
+</ul>
+</blockquote>
+<p>　　<code>$git branch dev                                                 //创建分支</code><br>　　创建一个分支dev</p>
+<p>　　<code>$git checkout dev                                               //切换分支到dev</code><br>　　因为没有操作的话，系统的默认分支为master，使用checkout就切换到了dev分支</p>
+<p>　　<code>$git checkout -b dev                                            //创建并切换到dev分支</code><br>　　此指令的效果是第一个和第二个结合使用的效果</p>
+<p>　　<code>$git branch                                                     //查看当前分支</code><br>　　此口令会显示当前的所有分支，包括master与已创建的分支，目前在哪个分支上，就在前面有一个*来标识</p>
+<p>　　<code>$git merge dev                                                  //合并dev分支到当前分支</code><br>　　合并分支口令，dev可以为任何已创建分支，即合并制定分支到当前分支</p>
+<p>　　<code>$git branch -d dev                                              //删除分支dev</code><br>　　-d表示delete，即删除分支dev</p>
+<p>　　<code>$git log --graph --pretty=online abbrev-commit                  //查看分支图</code><br>　　使用此口令可以调出可视化分支图，便于观察自己所做过的修改</p>
+<p>　　<code>$git merge --no-ff -m&quot;something&quot; dev                            //非Fast-forward合并分支</code><br>　　合并分支分为两种，一种是ff合并，一种是非ff合并，非ff合并在分支图里可以看到修改细节，使版本演进更加明显</p>
+<p>　　<code>$git stash                                                      //保存当前分支</code><br>　　当有紧急任务，而手头工作又没做完的情况下，可以先用stash保存分支，支持保存多个分支</p>
+<p>　　<code>$git stash list                                                 //查看保存的代码列表</code><br>　　调出保存代码列表</p>
+<p>　　<code>$git stash pop                                                  //读取保存区存储的代码</code><br>　　在读取的同时删除stash里的存档</p>
+<p>　　<code>$git stash apply                                                //读取保存区存储的代码</code><br>　　在读取的同时保存stash里的存档</p>
+<p>　　<code>$git stash apply/pop stash@{0}                                  //读取对应保存区存储代码</code><br>　　当存储多个分支时，stash里会出现不同的stash代码头用来区分，这是用apply或pop读取相应的代码头就可以提取出来与之对应的代码段</p>
+<p>　　<code>$git stash drop                                                 //删除stash里的存储</code><br>　　drop与apply配合使用，apply并未删除，可用此命令进行删除，其组合效果相当于pop</p>
+<p>　　<code>$git branch -D dev                                              //强力删除分支</code><br>　　当分支有修改，但并未合并，这时如果删除，系统会对你进行询问，想要删除就用D来执行强力删除</p>
+<p>　　这里需要注意一下，在对分支进行合并时，有时会有冲突产生，就需要使用者在本地的编辑器中对冲突进行修改，然后再add，commit，当冲突产生时，编辑器会自动编程冲突模式，只要修改提交就好</p>
+<hr>
+<blockquote>
+<ul>
+<li>多人协作时对远端的推送及更新</li>
+</ul>
+</blockquote>
+<p>　　<code>$git remote                                                     //查看远程库信息</code><br>　　一般默认为origin</p>
+<p>　　<code>$git remote -v                                                  //查看详细远程库信息</code><br>　　可以看到抓取和推送origin的地址，没有推送权限看不到push</p>
+<p>　　<code>$git push origin master                                         //推送主分支内容到github</code><br>　　master可以替换任意你想提交的分支，前提是要有push的权利，如果推送到自己的分支上，要远程关联起来</p>
+<p>　　<code>$git checkout -b dev origin/dev                                 //创建与远程相对应的dev分支到本地</code><br>　　如果从别人哪里clone版本库，想要参与推送到他的库里进行更新，就要建立一个与远程分支相对应的本地分支</p>
+<p>　　<code>$git pull                                                       //更新版本库</code><br>　　多人提交代码会有冲突，这时代表远程库中的要比你的代码库更新，需要pull更新一下再提交</p>
+<p>　　<code>$git branch --set-upstream dev origin/dev                       //指定本地分支与远程分支连接</code><br>　　pull成功后还提交不了有两种原因，当出现no tracking information字样的时候，证明本地分支没有与远程分支连接，需要用此命令来连接</p>
+<p>　　这些是多人协作的常用口令，有的人喜欢先pull再push，无疑这是一个好习惯，也有人喜欢直接push，出现问题再pull，两者都可以，就看大家的心情了，当push出现问题是先pull，如果pull成功了还是push不了，出现no tracking information字样的时候，证明本地分支没有与远程分支连接，需要先连接，连接之后还是push不了，可能是有冲突，需要大家解决冲突再push，总之哪里出现了问题，我们就在哪里解决问题。<br>　　这一章可能没有之前好理解，因为涉及到了分支的创建，操作，与远程库的push等问题，笔者在学习的过程中也出现过问题，这就需要大家多实践，从实践中总结经验，多分析，多操作，相信一定会熟练的操作git的！下一章我们从标签以及git服务器方面进行总结。</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Oliwans</h4>
+    <p>个人博客技术、观点、见解分享者；我会在这里分享工作中的问题；兴趣方面的观点；生活中的感悟。</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-sina-weibo" href="http://v.t.sina.com.cn/share/share.php?title=个人博客技术、观点、见解分享者；我会在这里分享工作中的问题；兴趣方面的观点；生活中的感悟。 ?url=www.oliwans.me/2015/10/26/learn-git2/" target="_blank">
+        <span class="hidden">weibo</span>
+    </a>
+    <a class="icon-twitter" href="http://twitter.com/share?url=www.oliwans.me/2015/10/26/learn-git2/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=www.oliwans.me/2015/10/26/learn-git2/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=www.oliwans.me/2015/10/26/learn-git2/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="icon-logoo">•</span>
+    
+    <a class="older-posts" href="/2015/10/25/learn-git/">
+        git速成手册(一) →
+    </a>
+    
+</nav>
+
+  <!-- 多说评论框 start -->
+
+	<div class="ds-thread" data-thread-key="2015/10/26/learn-git2/" data-title="git速成手册(二)" data-url="www.oliwans.me/2015/10/26/learn-git2/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"oliwans"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+</main>
+
+
+      
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Oliwans'blog</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+
+
+
+
+
+  </div>
+</div>
+
+<nav  class="outer-nav top horizontal">
+
+          <a class="icon-home"  href="/"><span>Home</span></a>
+
+          <a class="icon-news"  href="/archive"><span>Archive</span></a>
+
+          <a class="icon-image"  href="/images"><span>Images</span></a>
+
+          <a class="icon-wiki"  href="/wiki/2014-10-28-wiki/"><span>Wiki</span></a>
+
+          <a class="icon-Favorites"  href="/favorites"><span>Favorites</span></a>
+
+          <a class="icon-mail"  href="/myself/myself.html"><span>Contact</span></a>
+
+</nav>
+
+</div>
+</body>
+</html>
