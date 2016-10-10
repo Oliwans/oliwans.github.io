@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>巧用ng-repeat来展示个性化内容的三种方法 | Oliwans&#39;blog</title>
+  <meta name="description" content="不会写影评的摄影师不是好的FED" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <meta name="generator" content="Oliwans'blog">
+
+  
+  
+  
+
+  
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body class="home-template">
+<div id="perspective" class="perspective effect-movedown">
+  <div class="container">
+    <!-- wrapper -->
+    <div class="wrapper">
+
+      <header class="site-head"  style="background: #24282b url(/img/bgp.jpg) " >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/img/pic.gif" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Oliwans'blog</h1>
+            <h2 class="blog-description">不会写影评的摄影师不是好的FED</h2>
+            <h5><button id="showMenu">Show Menu</button></h5>
+        </div>
+    </div>
+</header>
+
+      
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-10-09T03:20:36.000Z" itemprop="datePublished">
+          2016-10-09
+      </time>
+    
+</span>
+    <h1 class="post-title">巧用ng-repeat来展示个性化内容的三种方法</h1>
+    <section class="post-content">
+      <hr>
+<p>　　ng-repeat是angular.js自带的指令，作用是循环数组克隆展示html，不过它循环克隆出来的都是带有同样的DOM，如果想做个性化的功能，就不那么容易实现了，这里主要介绍两种方法，当然都是自己总结出来的，有不妥的地方欢迎指正：</p>
+<hr>
+<h4 id="1-ng-repeat_双层循环">1.ng-repeat 双层循环</h4><hr>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"> <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#/tab/KHReport/</span></span></span><span class="expression">&#123;&#123;<span class="variable">myHM.COURSE</span>_<span class="variable">ID</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">/</span></span></span><span class="expression">&#123;&#123;<span class="variable">myHM.authorTag</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">class</span>=<span class="value">"zkht-menu-sense-item"</span> <span class="attribute">ng-show</span>=<span class="value">"showKH"</span> <span class="attribute">ng-repeat</span> = "<span class="attribute">myHM</span> <span class="attribute">in</span> <span class="attribute">myHMs</span>" <span class="attribute">ng-click</span>=<span class="value">"addHot(myHM.COURSE_ID)"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">h6</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">myHM.COURSE</span>_<span class="variable">NAME</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">h6</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"zkht-question-profile"</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">myHM.TITLE</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"zkht-sense-item-bottom"</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="title">img</span> <span class="attribute">ng-repeat</span>=<span class="value">"img in myHM.userList"</span> <span class="attribute">ng-src</span>=<span class="value">"</span></span></span><span class="expression">&#123;&#123;<span class="variable">img.pcImg</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">err-src</span>=<span class="value">"img/defaultFace.png"</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"zkht-right"</span>&gt;</span>热度</span><span class="expression">&#123;&#123;<span class="variable">myHM.COURSE</span>_<span class="variable">HEAT</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="title">img</span> <span class="attribute">class</span>=<span class="value">"zkht-right zkht-fire-img"</span> <span class="attribute">src</span>=<span class="value">"img/fire.png"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>这段项目里的代码是使用了双层嵌套循环，外层是<code>myHM in myHMs</code>来实现，内层是<code>img in myHM.userList</code>的循环来保证实现不同的头像，这样达成的效果是每项大的内容中分别显示不同数量的img图片头像，从而达到区分项的目的，而所引用的后台数据是由一个大数组内嵌套一个包含多个小数组的userList对象，从而实现的。</p>
+<hr>
+<h4 id="2-使用eval">2.使用eval</h4><hr>
+<p>eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码。其实说白了eval()就是一个执行语句，只不过只能操作字符串，相当于一个简略版的function，不过与ng-repeat搭配使用功能则强大了不少，还是刚才那段代码，中间加了些东西</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#/tab/KHReport/</span></span></span><span class="expression">&#123;&#123;<span class="variable">myHM.COURSE</span>_<span class="variable">ID</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">/</span></span></span><span class="expression">&#123;&#123;<span class="variable">myHM.authorTag</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">class</span>=<span class="value">"zkht-menu-sense-item"</span> <span class="attribute">ng-show</span>=<span class="value">"showKH"</span> <span class="attribute">ng-repeat</span> = "<span class="attribute">myHM</span> <span class="attribute">in</span> <span class="attribute">myHMs</span> | <span class="attribute">filter:searchCourseQuestions</span>" <span class="attribute">ng-click</span>=<span class="value">"addHot(myHM.COURSE_ID)"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"zkht-my-question"</span> <span class="attribute">ng-show</span>=<span class="value">"myGiveQuestions</span></span></span><span class="expression">&#123;&#123;$<span class="variable">index</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span>&gt;</span>我出题<span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">h6</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">myHM.COURSE</span>_<span class="variable">NAME</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">h6</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"zkht-question-profile"</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">myHM.TITLE</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"zkht-sense-item-bottom"</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="title">img</span> <span class="attribute">ng-repeat</span>=<span class="value">"img in myHM.userList"</span> <span class="attribute">ng-src</span>=<span class="value">"</span></span></span><span class="expression">&#123;&#123;<span class="variable">img.pcImg</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">err-src</span>=<span class="value">"img/defaultFace.png"</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"zkht-right"</span>&gt;</span>热度</span><span class="expression">&#123;&#123;<span class="variable">myHM.COURSE</span>_<span class="variable">HEAT</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="title">img</span> <span class="attribute">class</span>=<span class="value">"zkht-right zkht-fire-img"</span> <span class="attribute">src</span>=<span class="value">"img/fire.png"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>controller中的代码为<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">for(i <span class="type">in</span> <span class="type">data</span>.<span class="type">data</span>.records)&#123;</span><br><span class="line">	eval(<span class="string">'$scope.myGiveQuestions'</span>+i+ <span class="string">'=false'</span>);</span><br><span class="line">	for(j <span class="type">in</span> <span class="type">data</span>.<span class="type">data</span>.records[i].userList)&#123;</span><br><span class="line">	  <span class="keyword">if</span> (<span class="type">data</span>.<span class="type">data</span>.records[i].userList[j].pcImg.indexOf(<span class="string">'http'</span>)<span class="comment">!=0) &#123;</span></span><br><span class="line">	      <span class="type">data</span>.<span class="type">data</span>.records[i].userList[j].pcImg=rootUrl + <span class="type">data</span>.<span class="type">data</span>.records[i].userList[j].pcImg;</span><br><span class="line">	  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	      <span class="type">data</span>.<span class="type">data</span>.records[i].userList[j].pcImg=<span class="type">data</span>.<span class="type">data</span>.records[i].userList[j].pcImg;</span><br><span class="line">	  &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (<span class="type">data</span>.<span class="type">data</span>.records[i].authorTag) &#123;</span><br><span class="line">	  eval(<span class="string">'$scope.myGiveQuestions'</span>+i+ <span class="string">'=true'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面两段代码的作用是为了让后台传输的数据中包含authorTag的项显示“我出题”标识，正常不能随便改变ng-repeat中的DOM元素，而这种可有可无的参数也不能用双层嵌套来显示，所以就采用了eval()的方法来识别，通过改变字符串的内容，配合ng-if或ng-show，可以达到个别显示的效果。</p>
+<hr>
+<h4 id="3-个性化内容并非数组形式传入，使用$index_+_eval()">3.个性化内容并非数组形式传入，使用$index + eval()</h4><hr>
+<p>还有一种特殊的情况，即所要展示的个性化内容后台数据并非以数组形式传入，这时不能采用嵌套ng-repeat的方法，而单独采用eval()也不能保证每项内部数组的个数的不同，这时就需要$index出场了<br><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#/tab/myQuestionItemShow/</span></span></span><span class="expression">&#123;&#123;<span class="variable">question.id</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">data-name</span>=<span class="value">"</span></span></span><span class="expression">&#123;&#123;$<span class="variable">index</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">class</span>=<span class="value">"zkth-myQuestionBank-itemsigle"</span> <span class="attribute">ng-repeat</span>=<span class="value">"question in questions | filter:filterQuestion"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">h2</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">question.questions</span>_<span class="variable">name</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">p</span> <span class="attribute">ng-show</span>=<span class="value">"Show</span></span></span><span class="expression">&#123;&#123;$<span class="variable">index</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">1"</span>&gt;</span>A&amp;nbsp;&amp;nbsp;</span><span class="expression">&#123;&#123;<span class="variable">question.optiona</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">p</span> <span class="attribute">ng-show</span>=<span class="value">"Show</span></span></span><span class="expression">&#123;&#123;$<span class="variable">index</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">2"</span>&gt;</span>B&amp;nbsp;&amp;nbsp;</span><span class="expression">&#123;&#123;<span class="variable">question.optionb</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">p</span> <span class="attribute">ng-show</span>=<span class="value">"Show</span></span></span><span class="expression">&#123;&#123;$<span class="variable">index</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">3"</span>&gt;</span>C&amp;nbsp;&amp;nbsp;</span><span class="expression">&#123;&#123;<span class="variable">question.optionc</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">p</span> <span class="attribute">ng-show</span>=<span class="value">"Show</span></span></span><span class="expression">&#123;&#123;$<span class="variable">index</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">4"</span>&gt;</span>D&amp;nbsp;&amp;nbsp;</span><span class="expression">&#123;&#123;<span class="variable">question.optiond</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"tip"</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- &lt;span&gt;标签&lt;/span&gt; --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"time"</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">question.createdate</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; data.data.records.length; i++) &#123;</span><br><span class="line">	<span class="built_in">eval</span>(<span class="string">'$scope.Show'</span>+i+ <span class="string">'1'</span> +<span class="string">'=true'</span>);</span><br><span class="line">	<span class="built_in">eval</span>(<span class="string">'$scope.Show'</span>+i+ <span class="string">'2'</span> +<span class="string">'=true'</span>);</span><br><span class="line">	<span class="built_in">eval</span>(<span class="string">'$scope.Show'</span>+i+ <span class="string">'3'</span> +<span class="string">'=true'</span>);</span><br><span class="line">	<span class="built_in">eval</span>(<span class="string">'$scope.Show'</span>+i+ <span class="string">'4'</span> +<span class="string">'=true'</span>);</span><br><span class="line">	<span class="keyword">if</span> (!data.data.records[i].optiona) &#123;</span><br><span class="line">		<span class="built_in">eval</span>(<span class="string">'$scope.Show'</span>+i+ <span class="string">'1'</span> +<span class="string">'=false'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!data.data.records[i].optionb) &#123;</span><br><span class="line">		<span class="built_in">eval</span>(<span class="string">'$scope.Show'</span>+i+ <span class="string">'2'</span> +<span class="string">'=false'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!data.data.records[i].optionc) &#123;</span><br><span class="line">		<span class="built_in">eval</span>(<span class="string">'$scope.Show'</span>+i+ <span class="string">'3'</span> +<span class="string">'=false'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!data.data.records[i].optiond) &#123;</span><br><span class="line">		<span class="built_in">eval</span>(<span class="string">'$scope.Show'</span>+i+ <span class="string">'4'</span> +<span class="string">'=false'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面两段代码指一套题目，每道题的选项个数是不同的，有选项就让她显示，无选项就不显示，$index指代的是每个选项的索引，然后根据每个大的题目的索引来遍历数组，用eval()来单独控制各小选项的显示和隐藏，这种方法主要针对于个性化内容多，但不以数组的形式传过来的方式</p>
+<p>以上便是我在开发中总结的三种方式</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Oliwans</h4>
+    <p>个人博客技术、观点、见解分享者；我会在这里分享工作中的问题；兴趣方面的观点；生活中的感悟。</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-sina-weibo" href="http://v.t.sina.com.cn/share/share.php?title=个人博客技术、观点、见解分享者；我会在这里分享工作中的问题；兴趣方面的观点；生活中的感悟。 ?url=www.oliwans.me/2016/10/09/change-ng-repeat-nomal/" target="_blank">
+        <span class="hidden">weibo</span>
+    </a>
+    <a class="icon-twitter" href="http://twitter.com/share?url=www.oliwans.me/2016/10/09/change-ng-repeat-nomal/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=www.oliwans.me/2016/10/09/change-ng-repeat-nomal/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=www.oliwans.me/2016/10/09/change-ng-repeat-nomal/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="icon-logoo">•</span>
+    
+    <a class="older-posts" href="/2016/10/07/create-textarea/">
+        创建可以高度自适应的input或textarea →
+    </a>
+    
+</nav>
+
+  <!-- 多说评论框 start -->
+
+	<div class="ds-thread" data-thread-key="2016/10/09/change-ng-repeat-nomal/" data-title="巧用ng-repeat来展示个性化内容的三种方法" data-url="www.oliwans.me/2016/10/09/change-ng-repeat-nomal/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"oliwans"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+</main>
+
+
+      
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Oliwans'blog</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+
+
+
+
+
+  </div>
+</div>
+
+<nav  class="outer-nav top horizontal">
+
+          <a class="icon-home"  href="/"><span>Home</span></a>
+
+          <a class="icon-news"  href="/archive"><span>Archive</span></a>
+
+          <a class="icon-image"  href="/images"><span>Images</span></a>
+
+          <a class="icon-wiki"  href="/wiki/2014-10-28-wiki/"><span>Wiki</span></a>
+
+          <a class="icon-Favorites"  href="/favorites"><span>Favorites</span></a>
+
+          <a class="icon-mail"  href="/myself/myself.html"><span>Contact</span></a>
+
+</nav>
+
+</div>
+</body>
+</html>
